@@ -1,0 +1,27 @@
+version: '3.9'
+
+services:
+  db:
+    image: "postgres:14.0-alpine"
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: organizer
+    ports:
+      - "5432:5432"
+    volumes:
+      - app-volume:/var/lib/postgresql/data
+
+  unit:
+    image: "postgres:14.0-alpine"
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: unit_test
+    ports:
+      - "5433:5432"
+
+volumes :
+  app-volume: #
